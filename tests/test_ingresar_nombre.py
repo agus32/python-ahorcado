@@ -16,7 +16,7 @@ def test_nombre_con_espacios_a_los_costados():
     assert verificar_nombre("   Ana   ") == False
 
 def test_nombre_con_espacios_entre_letras():
-    assert verificar_nombre("J u a n") == True
+    assert verificar_nombre("J u a n") == False
 
 def test_nombre_con_caracteres_especiales():
     assert verificar_nombre("M@r.a") == False

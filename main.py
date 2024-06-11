@@ -31,19 +31,15 @@ def generar_palabra(palabra):
 
 
 def cheequear_palabra(palabra, adivinanza):
-    def normalizar(texto):
-        return ''.join(filter(str.isalpha, texto.lower()))
-
-    palabra_normalizada = normalizar(palabra)
-    adivinanza_normalizada = normalizar(adivinanza)
-
-    return palabra_normalizada == adivinanza_normalizada
-
+    return palabra.lower() == adivinanza
 
 
 
 
 def verificar_nombre(nombre):
+    aux  = nombre.replace(" ", "")
+    if aux != nombre:
+        return False
     # Verificamos que el nombre no esté vacío.
     if not nombre:
         return False
@@ -67,20 +63,19 @@ def verificar_nombre(nombre):
 
 
 def verificar_letra(letra, palabra):
-    # Verificamos que la letra sea un solo caracter.
-    if len(letra) != 1:
+    if len(letra) == 0:
         return False
-    
-    # Verificamos que la letra sea alfabética.
-    if not letra.isalpha():
-        return False
-    
-    # Verificamos que la letra sea minúscula.
-    if not letra.islower():
-        return False
-    
-    # Verificamos que la letra no haya sido ingresada previamente.
-    if letra in palabra:
-        return False
-    
-    return True
+
+    if letra.lower() in palabra:
+        return True
+    return False
+
+def dibujar_palabra(lista, palabra):
+    espacios = ["_"] * len(palabra)
+
+    for l in lista:
+        for i, p in enumerate(palabra):
+            if l == p:
+                espacios[i] = l 
+
+    return "".join(espacios) 

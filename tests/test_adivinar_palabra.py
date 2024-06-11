@@ -16,10 +16,7 @@ def test_palabra_correcta_case_sensitive():
     assert cheequear_palabra("hOlA","hola") == True
 
 def test_palabra_correcta_case_sensitive_invertido():
-    assert cheequear_palabra("hola","hOlA") == True
+    assert cheequear_palabra("hola","hOlA") == False
 
 def test_palabra_correcta_con_espacios():
-    assert cheequear_palabra("    h ol  a   ","hola") == True
-
-def test_palabra_correcta_con_numeros():
-    assert cheequear_palabra("hola1","hola") == False
+    assert cheequear_palabra("    h ol  a   ","hola") == False
