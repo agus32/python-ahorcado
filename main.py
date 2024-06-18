@@ -1,12 +1,12 @@
 import re
 
 
-def initialize_game(word):
+def initializar_juego(palabra):
     return {
-        "word": word,
-        "attempts_left": 6,
-        "guessed_letters": [],
-        "wrong_guesses": []
+        "palabra": palabra,
+        "intentos_restantes": 5,
+        "letras_adivinadas": [],
+        "letras_erroneas": []
     }
 
 
