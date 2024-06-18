@@ -62,11 +62,11 @@ def verificar_nombre(nombre):
     return True
 
 
-def verificar_letra(letra, palabra):
+def verificar_letra(letra, palabra, lista_letras_adivinadas):
     if len(letra) == 0:
         return False
 
-    if letra.lower() in palabra:
+    if letra.lower() in palabra and letra.lower() not in lista_letras_adivinadas:
         return True
     return False
 
@@ -83,12 +83,12 @@ def dibujar_palabra(lista, palabra):
 
 def adivinar_letra(juego, letra):
     # La letra ya ha sido adivinada (correcta o incorrectamente)
-    if letra in juego["letras_adivinadas"] or letra in juego["letras_erroneas"]:
+    if letra in juego["letras_erroneas"]:
         juego["intentos_restantes"] -= 1
         return
 
     # La letra es parte de la palabra a adivinar
-    if letra in juego["palabra"]:
+    if verificar_letra(letra, juego["palabra"], juego["letras_adivinadas"]):
         juego["letras_adivinadas"].append(letra)
     else:
         juego["letras_erroneas"].append(letra)
