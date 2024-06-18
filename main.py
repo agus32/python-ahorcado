@@ -33,7 +33,9 @@ def generar_palabra(palabra):
 def cheequear_palabra(palabra, adivinanza):
     return palabra.lower() == adivinanza
 
-
+def adivinar_palabra(juego, adivinanza):
+    if not chequear_palabra(juego["palabra"], adivinanza):
+        juego["intentos_restantes"] -= 1
 
 
 def verificar_nombre(nombre):
