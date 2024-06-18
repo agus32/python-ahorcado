@@ -79,3 +79,17 @@ def dibujar_palabra(lista, palabra):
                 espacios[i] = l 
 
     return "".join(espacios) 
+
+
+def adivinar_letra(juego, letra):
+    # La letra ya ha sido adivinada (correcta o incorrectamente)
+    if letra in juego["letras_adivinadas"] or letra in juego["letras_erroneas"]:
+        juego["intentos_restantes"] -= 1
+        return
+
+    # La letra es parte de la palabra a adivinar
+    if letra in juego["palabra"]:
+        juego["letras_adivinadas"].append(letra)
+    else:
+        juego["letras_erroneas"].append(letra)
+        juego["intentos_restantes"] -= 1
