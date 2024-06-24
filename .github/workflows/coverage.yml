@@ -25,7 +25,8 @@ jobs:
           coverage run -m pytest
           coverage xml
 
-      - name: Upload coverage to Codecov
-      	run: codecov
-      	env:
+      - name: Run tests with coverage
+        run: |
+          codecov
+        env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
