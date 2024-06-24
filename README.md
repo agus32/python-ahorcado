@@ -1,4 +1,4 @@
-[![tests](https://github.com/agus32/python-ahorcado/actions/workflows/push.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/push.yml)[![codecov](https://codecov.io/gh/agus32/python-ahorcado/graph/badge.svg?token=IN4OURMEV5)](https://codecov.io/gh/agus32/python-ahorcado)
+[![tests](https://github.com/agus32/python-ahorcado/actions/workflows/push.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/push.yml)  [![codecov](https://codecov.io/gh/agus32/python-ahorcado/graph/badge.svg?token=IN4OURMEV5)](https://codecov.io/gh/agus32/python-ahorcado)
 # Juego de Ahorcado en Python
 
 Este es un simple juego de ahorcado desarrollado en Python. El objetivo del juego es adivinar una palabra antes de que se complete el dibujo del ahorcado.
