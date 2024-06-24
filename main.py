@@ -34,7 +34,7 @@ def cheequear_palabra(palabra, adivinanza):
     return palabra.lower() == adivinanza
 
 def adivinar_palabra(juego, adivinanza):
-    if not chequear_palabra(juego["palabra"], adivinanza):
+    if not cheequear_palabra(juego["palabra"], adivinanza):
         juego["intentos_restantes"] -= 1
 
 
@@ -64,11 +64,8 @@ def verificar_nombre(nombre):
     return True
 
 
-def verificar_letra(letra, palabra, lista_letras_adivinadas):
-    if len(letra) == 0:
-        return False
-
-    if letra.lower() in palabra and letra.lower() not in lista_letras_adivinadas:
+def verificar_letra(letra, palabra):
+    if letra.lower() in palabra and len(letra) == 1:
         return True
     return False
 
@@ -85,12 +82,12 @@ def dibujar_palabra(lista, palabra):
 
 def adivinar_letra(juego, letra):
     # La letra ya ha sido adivinada (correcta o incorrectamente)
-    if letra in juego["letras_erroneas"]:
+    if letra in juego["letras_erroneas"] or letra in juego["letras_adivinadas"]:
         juego["intentos_restantes"] -= 1
         return
 
     # La letra es parte de la palabra a adivinar
-    if verificar_letra(letra, juego["palabra"], juego["letras_adivinadas"]):
+    if verificar_letra(letra, juego["palabra"]):
         juego["letras_adivinadas"].append(letra)
     else:
         juego["letras_erroneas"].append(letra)

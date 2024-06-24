@@ -75,7 +75,7 @@ def test_adivinar_letra_doble():
         "letras_adivinadas": [],
         "letras_erroneas": ["p"]
     }
-    adivinar_letra(juego,"p")
+    adivinar_letra(juego,"o")
     assert juego == {
         "palabra": "oso",
         "intentos_restantes": 4,
@@ -84,22 +84,20 @@ def test_adivinar_letra_doble():
     }
 
 def test_letra_vacia():
-    assert verificar_letra("", "hola",[]) == False
+    assert verificar_letra("", "hola") == False
 
 def test_letra_mas_de_una():
-    assert verificar_letra("as", "hola",[]) == False
+    assert verificar_letra("as", "hola") == False
 
 def test_correcto():
-    assert verificar_letra("a", "hola",[]) == True
+    assert verificar_letra("a", "hola") == True
 
-def test_existente():
-    assert verificar_letra("a", "hola",["o"]) == False
 
 def test_letra_mayuscula():
-    assert verificar_letra("A", "hola",[]) == True
+    assert verificar_letra("A", "hola") == True
 
 def test_letra_con_tilde():
-    assert verificar_letra("á", "hola",[]) == False
+    assert verificar_letra("á", "hola") == False
 
 def test_letra_especial():
-    assert verificar_letra("%", "hola",[]) == False
+    assert verificar_letra("%", "hola") == False
