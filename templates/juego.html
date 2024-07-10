@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Ahorcado</title>
+</head>
+<body>
+    <h1>Juego de Ahorcado</h1>
+    <p>Palabra: {{ dibujar_palabra(juego['letras_adivinadas'], juego['palabra']) }}</p>
+    <p>Intentos restantes: {{ juego['intentos_restantes'] }}</p>
+    <p>Letras incorrectas: {{ ', '.join(juego['letras_erroneas']) }}</p>
+    
+    {% if not palabra_completa %}
+        <form method="post">
+            <input type="radio" id="letra" name="opcion" value="letra" checked>
+            <label for="letra">Adivinar letra</label>
+            <input type="text" name="letra" maxlength="1">
+            <br>
+            <input type="radio" id="palabra" name="opcion" value="palabra">
+            <label for="palabra">Adivinar palabra</label>
+            <input type="text" name="adivinanza">
+            <br>
+            <button type="submit">Enviar</button>
+        </form>
+    {% endif %}
+    
+    {% if mensaje %}
+        <p style="color: green;">{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>

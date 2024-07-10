@@ -1,7 +1,12 @@
+from flask import Flask, render_template, request, redirect, url_for, session
 import re
+import os
+
+app = Flask(__name__)
+app.secret_key = os.urandom(24)
 
 
-def initializar_juego(palabra):
+def inicializar_juego(palabra):
     return {
         "palabra": palabra,
         "intentos_restantes": 5,
@@ -92,3 +97,54 @@ def adivinar_letra(juego, letra):
     else:
         juego["letras_erroneas"].append(letra)
         juego["intentos_restantes"] -= 1
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        palabra = request.form['palabra']
+        if generar_palabra(palabra):
+            session['juego'] = inicializar_juego(palabra)
+            return redirect(url_for('juego'))
+        else:
+            error = "Palabra no válida. Debe tener entre 3 y 26 letras y no contener caracteres especiales."
+            return render_template('index.html', error=error)
+    return render_template('index.html')
+
+@app.route('/juego', methods=['GET', 'POST'])
+def juego():
+    juego = session.get('juego', None)
+    if not juego:
+        return redirect(url_for('index'))
+
+    mensaje = None
+    if request.method == 'POST':
+        opcion = request.form['opcion']
+        if opcion == 'letra':
+            letra = request.form['letra'].strip().lower()
+            if len(letra) != 1 or not letra.isalpha():
+                mensaje = "Entrada no válida. Ingresa una sola letra."
+            else:
+                adivinar_letra(juego, letra)
+        elif opcion == 'palabra':
+            adivinanza = request.form['adivinanza'].strip().lower()
+            adivinar_palabra(juego, adivinanza)
+            if cheequear_palabra(juego["palabra"], adivinanza):
+                mensaje = "¡Has adivinado la palabra!"
+                session['juego'] = juego
+                return render_template('juego.html', juego=juego, palabra_completa=True, mensaje=mensaje, dibujar_palabra=dibujar_palabra)
+        else:
+            mensaje = "Opción no válida. Elige 'letra' o 'palabra'."
+
+    if "_" not in dibujar_palabra(juego["letras_adivinadas"], juego["palabra"]):
+        mensaje = f"¡Felicidades! Has adivinado la palabra: {juego['palabra']}"
+        return render_template('juego.html', juego=juego, palabra_completa=True, mensaje=mensaje, dibujar_palabra=dibujar_palabra)
+    elif juego["intentos_restantes"] <= 0:
+        mensaje = f"Se han acabado los intentos. La palabra era: {juego['palabra']}"
+        return render_template('juego.html', juego=juego, palabra_completa=True, mensaje=mensaje, dibujar_palabra=dibujar_palabra)
+
+    session['juego'] = juego
+    return render_template('juego.html', juego=juego, mensaje=mensaje, dibujar_palabra=dibujar_palabra)
+
+if __name__ == '__main__':
+    app.run(debug=True)
