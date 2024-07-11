@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Ahorcado</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function actualizarCampos() {
+                document.getElementById("campoLetra").disabled = !document.getElementById("letra").checked;
+                document.getElementById("campoPalabra").disabled = !document.getElementById("palabra").checked;
+            }
+            document.getElementById("letra").addEventListener("change", actualizarCampos);
+            document.getElementById("palabra").addEventListener("change", actualizarCampos);
+            actualizarCampos();
+        });
+    </script>
 </head>
 <body>
     <h1>Juego de Ahorcado</h1>
@@ -15,13 +26,17 @@
         <form method="post">
             <input type="radio" id="letra" name="opcion" value="letra" checked>
             <label for="letra">Adivinar letra</label>
-            <input type="text" name="letra" maxlength="1">
+            <input type="text" id="campoLetra" name="letra" maxlength="1">
             <br>
             <input type="radio" id="palabra" name="opcion" value="palabra">
             <label for="palabra">Adivinar palabra</label>
-            <input type="text" name="adivinanza">
+            <input type="text" id="campoPalabra" name="adivinanza">
             <br>
             <button type="submit">Enviar</button>
+        </form>
+    {% else %}
+        <form action="/">
+            <button type="submit">Volver al menú principal</button>
         </form>
     {% endif %}
     
