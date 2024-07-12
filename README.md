@@ -32,3 +32,6 @@ Este es un simple juego de ahorcado desarrollado en Python. El objetivo del jueg
 Para iniciar el juego, ejecuta el siguiente comando:
 ```bash
 python3 main.py
+```
+## Prueba
+https://agus32.github.io/python-ahorcado/
