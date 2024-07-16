@@ -33,5 +33,6 @@ Para iniciar el juego, ejecuta el siguiente comando:
 ```bash
 python3 main.py
 ```
-## Prueba
-https://agus32.github.io/python-ahorcado/
+## Deploy
+el deploy fue hecho en Railway y se puede acceder desde el siguiente link
+python-ahorcado.up.railway.app
