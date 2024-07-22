@@ -1,4 +1,5 @@
-[![run-unit-tests](https://github.com/agus32/python-ahorcado/actions/workflows/unit-test.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/unit-test.yml)  [![codecov](https://codecov.io/gh/agus32/python-ahorcado/graph/badge.svg?token=IN4OURMEV5)](https://codecov.io/gh/agus32/python-ahorcado)  [![aceptance-tests](https://github.com/agus32/python-ahorcado/actions/workflows/aceptance-test.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/aceptance-test.yml)
+[![run-unit-tests](https://github.com/agus32/python-ahorcado/actions/workflows/unit-test.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/unit-test.yml)  [![codecov](https://codecov.io/gh/agus32/python-ahorcado/graph/badge.svg?token=IN4OURMEV5)](https://codecov.io/gh/agus32/python-ahorcado)  [![aceptance-tests](https://github.com/agus32/python-ahorcado/actions/workflows/aceptance-test.yml/badge.svg)](https://github.com/agus32/python-ahorcado/actions/workflows/aceptance-test.yml) ![Pylint Score](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tu_usuario/tu_repositorio/rama/pylint_score.json)
+
 # Juego de Ahorcado en Python
 
 Este es un simple juego de ahorcado desarrollado en Python. El objetivo del juego es adivinar una palabra antes de que se complete el dibujo del ahorcado.
