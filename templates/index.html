@@ -3,17 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Ahorcado</title>
+    <title>Word Guessing Game</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 10px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <h1>Juego de Ahorcado</h1>
-    <form method="post">
-        <label for="palabra">Ingresa la palabra a adivinar:</label>
-        <input type="text" id="palabra" name="palabra" required>
-        <button type="submit">Iniciar Juego</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <div class="container">
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h2 class="card-title text-center">Juego de Ahorcado</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="palabra">Ingresar palabra a adivinar (3-26 letras, sin caracteres especiales):</label>
+                        <input type="text" class="form-control" id="palabra" name="palabra" required>
+                    </div>
+                    {% if error %}
+                    <div class="error">{{ error }}</div>
+                    {% endif %}
+                    <button type="submit" class="btn btn-custom btn-block">Iniciar Juego</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

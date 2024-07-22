@@ -4,44 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Ahorcado</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 10px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+    </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function actualizarCampos() {
-                document.getElementById("campoLetra").disabled = !document.getElementById("letra").checked;
-                document.getElementById("campoPalabra").disabled = !document.getElementById("palabra").checked;
-            }
-            document.getElementById("letra").addEventListener("change", actualizarCampos);
-            document.getElementById("palabra").addEventListener("change", actualizarCampos);
-            actualizarCampos();
+        document.addEventListener('DOMContentLoaded', function() {
+            const letraInput = document.querySelector('input[name="letra"]');
+            const palabraInput = document.querySelector('input[name="adivinanza"]');
+            const letraRadio = document.querySelector('input[value="letra"]');
+            const palabraRadio = document.querySelector('input[value="palabra"]');
+
+            const toggleInputs = () => {
+                letraInput.disabled = !letraRadio.checked;
+                palabraInput.disabled = !palabraRadio.checked;
+            };
+
+            letraRadio.addEventListener('change', toggleInputs);
+            palabraRadio.addEventListener('change', toggleInputs);
+
+            toggleInputs();
         });
     </script>
 </head>
 <body>
-    <h1>Juego de Ahorcado</h1>
-    <p>Palabra: {{ dibujar_palabra(juego['letras_adivinadas'], juego['palabra']) }}</p>
-    <p>Intentos restantes: {{ juego['intentos_restantes'] }}</p>
-    <p>Letras incorrectas: {{ ', '.join(juego['letras_erroneas']) }}</p>
-    
-    {% if not palabra_completa %}
-        <form method="post">
-            <input type="radio" id="letra" name="opcion" value="letra" checked>
-            <label for="letra">Adivinar letra</label>
-            <input type="text" id="campoLetra" name="letra" maxlength="1">
-            <br>
-            <input type="radio" id="palabra" name="opcion" value="palabra">
-            <label for="palabra">Adivinar palabra</label>
-            <input type="text" id="campoPalabra" name="adivinanza">
-            <br>
-            <button type="submit">Enviar</button>
-        </form>
-    {% else %}
-        <form action="/">
-            <button type="submit">Volver al menú principal</button>
-        </form>
-    {% endif %}
-    
-    {% if mensaje %}
-        <p style="color: green;">{{ mensaje }}</p>
-    {% endif %}
+    <div class="container">
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h2 class="card-title text-center">Juego de Adivinar Palabras</h2>
+                <p class="card-text">Palabra: {{ dibujar_palabra(juego['letras_adivinadas'], juego['palabra']) }}</p>
+                <p class="card-text">Intentos restantes: {{ juego['intentos_restantes'] }}</p>
+                <p class="card-text">Letras adivinadas: {{ juego['letras_adivinadas'] }}</p>
+                <p class="card-text">Letras erróneas: {{ juego['letras_erroneas'] }}</p>
+
+                {% if mensaje %}
+                <div class="alert alert-info">{{ mensaje }}</div>
+                {% endif %}
+
+                {% if palabra_completa %}
+                <a href="{{ url_for('index') }}" class="btn btn-custom btn-block">Volver al Menú Principal</a>
+                {% else %}
+                <form method="post">
+                    <div class="form-group">
+                        <input type="radio" id="letra" name="opcion" value="letra" checked>
+                        <label for="letra">Adivinar letra</label>
+                        <input type="text" class="form-control" name="letra" maxlength="1">
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="palabra" name="opcion" value="palabra">
+                        <label for="palabra">Adivinar palabra</label>
+                        <input type="text" class="form-control" name="adivinanza">
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-block">Enviar</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
