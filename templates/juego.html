@@ -50,8 +50,7 @@
                 <h2 class="card-title text-center">Juego de Adivinar Palabras</h2>
                 <p class="card-text">Palabra: {{ dibujar_palabra(juego['letras_adivinadas'], juego['palabra']) }}</p>
                 <p class="card-text">Intentos restantes: {{ juego['intentos_restantes'] }}</p>
-                <p class="card-text">Letras adivinadas: {{ juego['letras_adivinadas'] }}</p>
-                <p class="card-text">Letras erróneas: {{ juego['letras_erroneas'] }}</p>
+                <p class="card-text">Letras erróneas: {{ ', '.join(juego['letras_erroneas']) }}</p>
 
                 {% if mensaje %}
                 <div class="alert alert-info">{{ mensaje }}</div>
