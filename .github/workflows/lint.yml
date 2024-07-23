@@ -39,4 +39,8 @@ jobs:
         env:
           score: ${{ env.score }}
 
+      - name: Check updated JSON
+        run: cat pylint_score.json
+
+
 
