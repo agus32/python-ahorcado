@@ -1,8 +1,8 @@
 import json
 import os
 
-print(score)
 score = os.getenv('score')
+print(score)
 
 data = {
     "schemaVersion": 1,
@@ -10,8 +10,6 @@ data = {
     "message": f"{score}",
     "color": "blue" if (score) >= "8" else "red"
 }
-
-print(score)
 
 with open("pylint_score.json", "w") as f:
     json.dump(data, f)
