@@ -7,7 +7,7 @@ print(score)
 data = {
     "schemaVersion": 1,
     "label": "Pylint Score",
-    "message": f"{score}",
+    "message": f"{score}" + "/10",
     "color": "blue" if (score) >= "8" else "red"
 }
 
