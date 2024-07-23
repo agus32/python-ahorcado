@@ -11,5 +11,7 @@ data = {
     "color": "blue" if (score) >= "8" else "red"
 }
 
+print(score)
+
 with open("pylint_score.json", "w") as f:
     json.dump(data, f)
