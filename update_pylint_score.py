@@ -1,12 +1,13 @@
 import json
 import os
 
+print(score)
 score = os.getenv('score')
 
 data = {
     "schemaVersion": 1,
     "label": "Pylint Score",
-    "message": f"{score}/10",
+    "message": f"{score}",
     "color": "blue" if (score) >= "8" else "red"
 }
 
