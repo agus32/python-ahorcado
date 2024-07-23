@@ -7,7 +7,7 @@ data = {
     "schemaVersion": 1,
     "label": "Pylint Score",
     "message": f"{score}/10",
-    "color": "blue" if float(score) >= 8 else "red"
+    "color": "blue" if (score) >= "8" else "red"
 }
 
 with open("pylint_score.json", "w") as f:
