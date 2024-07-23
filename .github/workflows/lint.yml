@@ -35,7 +35,7 @@ jobs:
 
       - name: Update Pylint Score
         run: |
-          python update_pylint_score.py
+          python3 update_pylint_score.py
         env:
           score: ${{ env.score }}
 
