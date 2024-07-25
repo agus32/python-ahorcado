@@ -53,5 +53,15 @@ jobs:
       - name: Check pylint_score.json content
         run: cat pylint_score.json
 
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add pylint_score.json
+          git commit -m "Update pylint_score.json with new score"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
 
