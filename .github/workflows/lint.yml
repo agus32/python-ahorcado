@@ -61,7 +61,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add pylint_score.json
           git commit -m "Update pylint_score.json with new score"
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.comagus32/python-ahorcado.git
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/agus32/python-ahorcado.git
           git push origin HEAD:main
 
 
