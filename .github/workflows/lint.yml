@@ -38,6 +38,7 @@ jobs:
           python3 update_pylint_score.py
         env:
           score: ${{ env.score }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Check updated JSON
         run: cat pylint_score.json
