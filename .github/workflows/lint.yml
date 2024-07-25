@@ -54,14 +54,14 @@ jobs:
         run: cat pylint_score.json
 
       - name: Commit and push changes
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add pylint_score.json
           git commit -m "Update pylint_score.json with new score"
-          git push
-        env:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.comagus32/python-ahorcado.git
+          git push origin HEAD:main
 
 
