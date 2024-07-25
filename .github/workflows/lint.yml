@@ -51,7 +51,7 @@ jobs:
           git commit -m 'Update Pylint Score'
           git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/agus32/python-ahorcado.git HEAD:main
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 
 
