@@ -61,7 +61,7 @@ jobs:
           git commit -m "Update pylint_score.json with new score"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 
 
