@@ -49,6 +49,8 @@ jobs:
           git add pylint_score.json
           git commit -m 'Update Pylint Score'
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 
 
