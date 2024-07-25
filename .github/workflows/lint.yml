@@ -32,27 +32,29 @@ jobs:
         with:
           name: pylint-report
           path: pylint_report.txt
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Update Pylint Score
+      - name: Set score environment variable
+        run: echo "score=$(cat path/to/your/score.txt)" >> $GITHUB_ENV
+
+      - name: Print score environment variable
         run: |
           python3 update_pylint_score.py
         env:
           score: ${{ env.score }}
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - name: Check updated JSON
-        run: cat pylint_score.json
-
-      - name: Commit and Push Changes
+      - name: Update Pylint Score
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'actions@github.com'
-          git config --global user.name
-          git add pylint_score.json
-          git commit -m 'Update Pylint Score'
-          git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/agus32/python-ahorcado.git HEAD:main
-        env:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          python3 update_pylint_score.py
+
+      - name: Debug working directory
+        run: |
+          pwd
+          ls -la
+
+      - name: Check pylint_score.json content
+        run: cat pylint_score.json
 
 
 
